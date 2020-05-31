@@ -35,7 +35,7 @@ export default {
       newContactName: null,
       newContactNumber: null,
       newContactLastName: null,
-      msg: 'Welcome to my Phone book App created in Vue.js  :)',
+      msg: ' Phone book App created in Vue.js :P',
       invalidNumber: false,
       contacts: contactsFromLocalStorage
     }
@@ -80,7 +80,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #344d56 ;
   margin-top: 60px;
 }
 h1, h2 {
