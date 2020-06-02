@@ -11,32 +11,51 @@
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+  <style>
+
+    .myfab{
+    position: absolute; right:0; bottom:0; margin-bottom: 10px;
+ margin-right: 30px;
+  }
+  </style>
 </head>
 
 <body>
   <div id="app">
+    <a class="myfab btn-floating btn-large waves-effect waves-light red" @click="openModal">
+      <i class="material-icons">add</i>
+    </a>
+
+    <div class="modal  bottom-sheet modal-fixed-footer" id="form_modal">
+      <div class="col s12 m6">
+        <div class="input-field">
+          <input type="text" v-model="newcontact.name" id="name">
+          <label for="name">Name</label>
+
+        </div>
+      </div>
+      <div class="col s12 m6">
+        <div class="input-field">
+          <input type="text" v-model="newcontact.phone" id="phone">
+          <label for="phone">Phone</label>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="col s12">
+          <div class="btn modal-close waves-effect waves-green btn-flat" @click="save">Save</div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
 
     <div class="container">
 
       <div class="row">
-        <div class="col s12 m6">
-          <div class="input-field">
-            <input type="text" v-model="newcontact.name" id="name">
-            <label for="name">Name</label>
-
-          </div>
-        </div>
-        <div class="col s12 m6">
-          <div class="input-field">
-            <input type="text" v-model="newcontact.phone" id="phone">
-            <label for="phone">Phone</label>
-
-          </div>
-        </div>
-
-        <div class="col s12">
-          <div class="btn" @click="save">Save</div>
-        </div>
 
       </div>
       <div class="row">
@@ -83,7 +102,8 @@
         newcontact: {
           name: '',
           phone: ''
-        }
+        },
+        modal: null
       },
       methods: {
         save() {
@@ -92,7 +112,18 @@
             name: '',
             phone: ''
           }
+        },
+        openModal() {
+          this.modal.open()
+        },
+        closeModal() {
+          this.modal.close()
         }
+      },
+      mounted() {
+        this.modal = M.Modal.init(document.querySelector('#form_modal'), {
+          dismissible: false
+        })
       }
     })
 
